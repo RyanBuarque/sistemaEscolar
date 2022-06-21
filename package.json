@@ -1,0 +1,26 @@
+{
+  "name": "sistemaescolar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanBuarque/sistemaEscolar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyanBuarque/sistemaEscolar/issues"
+  },
+  "homepage": "https://github.com/RyanBuarque/sistemaEscolar#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "sqlite": "^4.1.1",
+    "sqlite3": "^5.0.8"
+  },
+  "type":"module"
+}
