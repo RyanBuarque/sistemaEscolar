@@ -29,24 +29,24 @@ export async function insertPessoa(pessoa) {
     .catch((e) => {
       console.log('deu ruim', e)
       resCode = 404
-      return resCode
     })
 
   if (resCode == 404) {
     return resCode
   }
 
-  await opDb
-    .run('INSERT IaNTO pessoa (nome, idade) VALUES (?,?)', [
+  return opDb
+    .run('INSERT INTO pessoa (nome, idade) VALUES (?,?)', [
       pessoa.nome,
       pessoa.idade,
     ])
+    .then(() => {
+      return 'success'
+    })
     .catch((e) => {
       console.log('deu ruim', e)
-      resCode = 404
+      return 'error'
     })
-
-  return resCode
 }
 
 export async function updatePessoa(req, res) {
