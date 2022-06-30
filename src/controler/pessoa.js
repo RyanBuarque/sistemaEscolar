@@ -3,7 +3,7 @@ import { openDb } from '../configDB.js'
 export async function createTable() {
   openDb().then((db) => {
     db.exec(
-      'CREATE TABLE IF NOT EXISTS Pessoa ( id INTEGER PRIMARY KEY, nome TEXT, idade INTEGER)',
+      'CREATE TABLE IF NOT EXISTS Pessoa (id INTEGER PRIMARY KEY, nome TEXT, idade INTEGER, senha TEXT)'
     )
   })
 }
@@ -36,9 +36,10 @@ export async function insertPessoa(pessoa) {
   }
 
   return opDb
-    .run('INSERT INTO pessoa (nome, idade) VALUES (?,?)', [
+    .run('INSERT INTO pessoa (nome, idade, senha) VALUES (?,?,?)', [
       pessoa.nome,
       pessoa.idade,
+      pessoa.senha
     ])
     .then(() => {
       return 'success'
@@ -84,5 +85,27 @@ export async function deletePessoa(req, res) {
   })
   res.json({
     statusCode: 200,
+  })
+}
+
+export async function login(req, res) {
+  let userNome = req.body.nome;
+  let userSenha = req.body.senha;
+  openDb().then((db) => {
+    db.get('SELECT * FROM pessoa WHERE nome=?', [userNome]).then((pessoa) =>
+      {
+        if (pessoa && userSenha === pessoa.senha) {
+          res.json({
+            statusCode: 202,
+          })
+        }
+        else {
+          res.json({
+            statusCode: 505,
+          })
+        }
+      }
+      
+    )
   })
 }

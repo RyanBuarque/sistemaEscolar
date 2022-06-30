@@ -1,4 +1,4 @@
-import { Router } from 'express'
+import { Router } from 'express';
 import {
   createTable,
   insertPessoa,
@@ -6,9 +6,12 @@ import {
   selectPessoas,
   selectPessoa,
   deletePessoa,
-} from './controler/pessoa.js'
+  login,
+} from './controler/pessoa.js';
 
-const router = Router()
+const router = Router();
+
+createTable();
 
 router.get('/', (req, res) => {
   // res.json({
@@ -16,7 +19,7 @@ router.get('/', (req, res) => {
   //     "msg":"Api Rodando 2"
   // });
   return res.redirect('index.html')
-})
+});
 
 router.post('/pessoa', (req, res) => {
   let pessoa = req.body
@@ -36,12 +39,13 @@ router.post('/pessoa', (req, res) => {
       statusCode: 404,
     })
   })
-})
+});
 
-router.get('/pessoas', selectPessoas)
-router.get('/pessoa', selectPessoa)
+router.get('/pessoas', selectPessoas);
+router.get('/pessoa', selectPessoa);
 // router.post('/pessoa', insertPessoa);
-router.put('/pessoa', updatePessoa)
-router.delete('/pessoa', deletePessoa)
+router.put('/pessoa', updatePessoa);
+router.delete('/pessoa', deletePessoa);
+router.post('/sign_up', login);
 
-export default router
+export default router;

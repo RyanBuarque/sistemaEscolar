@@ -13,42 +13,24 @@
 </head>
 
 <body class="bg-info">
-    <div class="card">
-        <form class="bg-light" action="/pessoa" method="POST">
-            <h1 class="text-center my-3">Cadastro Aluno</h1>
+    <div class="card bg-light">
+        <form class="bg-light"  action="/sign_up" method="POST">
+            <h1 class="text-center my-3">Login</h1>
             <div class="mx-3">
                 <div class="d-flex flex-wrap align-items-end">
-                    <div class="">
-                        <label for="exampleInputName1" class="form-label">
-                            Nome
-                        </label>
-                        <input type="text" name="nome" class="form-control" id="nome" placeholder="Full Name" required/>
-                    </div>
-                    <div class="col-3">
-                        <input type="text" name="idade" class="form-control" id="idade" placeholder="Idade"/>
-                    </div>
                     <div class="w-100 mx-2 my-2">
-                        <input type="text" class="form-control" id="exampleInputCPF" placeholder="CPF"/>
+                        <label for="exampleInputCPF" class="form-label">
+                            CPF
+                        </label>
+                        <input type="text" name="nome" class="form-control" id="exampleInputCPF" placeholder="000.000.000-00" required />
                     </div>
                 </div>
                 <div class="d-flex align-items-end mx-2">
                     <div class="flex-grow-1">
-                        <label for="selectDepartament" class="form-label">
-                            Série
+                        <label for="exampleInputSenha" class="form-label">
+                            Senha
                         </label>
-                        <select class="form-select" aria-label="Default select example" id="selectDepartament">
-                            <option selected disabled>Please Select</option>
-                            <option value="1">1° ano</option>
-                            <option value="2">2° ano</option>
-                            <option value="3">3° ano</option>
-                        </select>
-                    </div>
-                    <div class="ms-3">
-                        <select class="form-select" aria-label="Default select example" id="selectDepartament">
-                            <option selected disabled>Turma</option>
-                            <option value="a">A</option>
-                            <option value="b">B</option>
-                        </select>
+                        <input type="password" name="senha" class="form-control" id="exampleInputSenha" placeholder="" required />
                     </div>
                 </div>
             </div>
